@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h1>{{department.name}}</h1>
+    <h2>{{department.dept_type}}</h2>
+    <h3>{{department.capacity}}</h3>
+    <form action="{% url 'bloodmanagement:department-delete' pk=department.pk %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Delete">
+    </form>
+{% endblock content %}

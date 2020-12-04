@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% for blood in bloods %}
+
+<h1>
+    <a href="{% url 'bloodmanagement:blood-detail' pk=blood.pk %}">{{blood.donor}}</a>
+</h1>
+{% endfor %}
+
+{% endblock content %}

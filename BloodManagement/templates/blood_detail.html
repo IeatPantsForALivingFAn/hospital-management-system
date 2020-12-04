@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h1>{{blood.patient}}</h1>
+    <h1>{{blood.date}}</h1>
+    <h2>{{ blood.blood_type}}</h2>
+    <h2>{{blood.donor}}</h2>
+    <h3>{{blood.location}}</h3>
+    <form action="{% url 'bloodmanagement:blood-delete' pk=blood.pk %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Delete">
+    </form>
+{% endblock content %}

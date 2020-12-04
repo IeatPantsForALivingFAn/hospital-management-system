@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management System</title>
+</head>
+<body>
+<nav style="display:inline">
+    <a href="{% url 'bloodmanagement:doctor-list' %}">Doctor List</a>
+    <a href="{% url 'bloodmanagement:doctor-create'%}">Add Doctor</a>
+    <a href="{% url 'bloodmanagement:department-list'%}">Department List</a>
+    <a href="{% url 'bloodmanagement:department-create'%}">Add Department</a>
+    <a href="{% url 'bloodmanagement:patient-create'%}">Add Patient</a>
+    <a href="{% url 'bloodmanagement:patient-list'%}">Patient List</a>
+    <a href="{% url 'bloodmanagement:blood-create'%}">Add Blood Packet</a>
+    <a href="{% url 'bloodmanagement:blood-list'%}">Blood Packet List</a>
+</nav>
+<br>
+    {% block content %}
+
+    {% endblock %}
+</body>
+</html>
