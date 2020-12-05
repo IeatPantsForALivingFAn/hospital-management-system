@@ -27,7 +27,7 @@ class Doctor(models.Model):
     
 
 class Department(models.Model):
-    name = models.CharField(max_length=10)
+    name = models.CharField(max_length=10,unique=True)
     dept_type = models.CharField(max_length=10)
     capacity = models.IntegerField()
 
@@ -65,7 +65,16 @@ class BloodPacket(models.Model):
     def __str__(self):
         return self.donor
     
-
+class Staff(models.Model):
+    name = models.CharField(max_length=20)
+    phone = models.IntegerField(validators=[MaxValueValidator(9999999999)])
+    address = models.TextField()
+    job = models.CharField(choices=[
+        ('IT','IT'),
+        ('Elec','Electrician'),
+        ('Nurse','Nurse')
+    ],max_length=5)
+    department = models.ForeignKey(Department,on_delete=models.SET_NULL,null=True,related_name='staff')
 
 
 

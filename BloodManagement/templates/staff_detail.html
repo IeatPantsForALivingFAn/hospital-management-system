@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h1>{{staff.name}}</h1>
+    <h2>{{staff.address}}</h2>
+    <h2>{{staff.phone}}</h2>
+    <h2>{{staff.department}}</h2>
+    <form action="{% url 'bloodmanagement:staff-delete' pk=staff.pk %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Delete">
+    </form>
+    <a href="{% url 'bloodmanagement:staff-update' pk=staff.pk %}"><input type="submit" value="Update"></a>
+{% endblock content %}

@@ -10,4 +10,5 @@
         {% csrf_token %}
         <input type="submit" value="Delete">
     </form>
+    <a href="{% url 'bloodmanagement:doctor-update' pk=doctor.pk %}"><input type="submit" value="Update"></a>
 {% endblock content %}
