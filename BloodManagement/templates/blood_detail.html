@@ -7,9 +7,12 @@
     <h2>{{blood.donor}}</h2>
     <h3>{{blood.location}}</h3>
     <h2>{{ blood.used }}</h2>
+    <div class="row">
     <form action="{% url 'bloodmanagement:blood-delete' pk=blood.pk %}" method="post">
         {% csrf_token %}
-        <input type="submit" value="Delete">
+        <input class="btn btn-primary m-3" type="submit" value="Delete">
     </form>
-    <a href="{% url 'bloodmanagement:blood-update' pk=blood.pk %}"><input type="submit" value="Update"></a>
+    <a href="{% url 'bloodmanagement:blood-update' pk=blood.pk %}"><input class="btn btn-warning m-3" type="submit" value="Update"></a>
+    </div>
+    
 {% endblock content %}

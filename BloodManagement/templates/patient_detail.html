@@ -1,17 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    <h1>{{patient.name}}</h1>
-    <h2>{{patient.get_gender_display}}</h2>
-    <h2>{{patient.address}}</h2>
-    <h2>{{patient.phone}}</h2>
-    <h2>{{patient.condition}}</h2>
-    <h2>{{patient.doctor}}</h2>
-    <h2>{{patient.department}}</h2>
-    <h3>{{patient.get_blood_type_display}}</h3>
+    <h1>Name: {{patient.name}}</h1>
+    <h2>Gender: {{patient.get_gender_display}}</h2>
+    <h2>Address: {{patient.address}}</h2>
+    <h2>Phone: {{patient.phone}}</h2>
+    <h2>Condition: {{patient.condition}}</h2>
+    <h2>Doctor: {{patient.doctor}}</h2>
+    <h2>Department: {{patient.department}}</h2>
+    <h3>Blood Type: {{patient.get_blood_type_display}}</h3>
+
+    <div class='row'>
     <form action="{% url 'bloodmanagement:patient-delete' pk=patient.pk %}" method="post">
         {% csrf_token %}
-        <input type="submit" value="Delete">
+        <input type="submit" class='btn btn-primary m-3' value="Delete">
     </form>
-    <a href="{% url 'bloodmanagement:patient-update' pk=patient.pk %}"><input type="submit" value="Update"></a>
+    <a href="{% url 'bloodmanagement:patient-update' pk=patient.pk %}"><input type="submit" class="m-3 btn btn-warning" value="Update"></a>
+    </div>
+    
 {% endblock content %}

@@ -5,10 +5,21 @@
     <h2>{{doctor.address}}</h2>
     <h3>{{doctor.phone}}</h3>
     <h4>{{doctor.specialization}}</h4>
+    <hr>
+    <br>
+    <h1>Patients</h1>
+    <div>
+        {% for patient in doctor.patients.all %}
+            <a href="{% url 'bloodmanagement:patient-detail' pk=patient.pk%}"><h3>{{patient.name}}</h3></a>
+        {% endfor %}
+    </div>
 
+    <div class='row'>
     <form action="{% url 'bloodmanagement:doctor-delete' pk=doctor.pk %}" method="post">
         {% csrf_token %}
-        <input type="submit" value="Delete">
+        <input class="btn btn-primary m-3" type="submit" value="Delete">
     </form>
-    <a href="{% url 'bloodmanagement:doctor-update' pk=doctor.pk %}"><input type="submit" value="Update"></a>
+    <a href="{% url 'bloodmanagement:doctor-update' pk=doctor.pk %}"><input type="submit" class="btn btn-warning m-3" value="Update"></a>
+    </div>
+    
 {% endblock content %}
