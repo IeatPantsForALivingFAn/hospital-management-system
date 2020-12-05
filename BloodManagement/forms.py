@@ -35,7 +35,6 @@ class CreateBloodForm(forms.Form):
     donor = forms.CharField(max_length=10)
     location = forms.CharField(widget=forms.Textarea,max_length=50)
     blood_type = forms.ChoiceField(choices=BloodTypes)
-    used = forms.BooleanField()
 
 class CreateStaffForm(forms.Form):
     name = forms.CharField(max_length=20)

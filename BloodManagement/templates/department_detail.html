@@ -1,12 +1,31 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    <h1>{{department.name}}</h1>
-    <h2>{{department.dept_type}}</h2>
-    <h3>{{department.capacity}}</h3>
+    <h1>Department Detail: {{department.name}}</h1>
+    <h2>Department Type: {{department.dept_type}}</h2>
+    <h3>Capacity: {{department.capacity}}</h3>
+
+    <hr>
+    <div class='row'>
+        <div class="col-md-6">
+            <h1>Patients</h1>
+            {% for patient in department.patient_set.all %}
+                <h3><a href="{% url 'bloodmanagement:patient-detail' pk=patient.pk%}">{{ patient.name }}</a></h3>
+            {% endfor %}
+        </div>
+        <div class="col-md-6">
+            <h1>Staff</h1>
+            {% for staff in department.staff.all %}
+                <h3><a href="{% url 'bloodmanagement:staff-detail' pk=staff.pk%}">{{ staff.name }}</a></h3>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row">
     <form action="{% url 'bloodmanagement:department-delete' pk=department.pk %}" method="post">
         {% csrf_token %}
-        <input type="submit" value="Delete">
+        <input class="btn btn-danger m-3" type="submit" value="Delete">
     </form>
-        <a href="{% url 'bloodmanagement:department-update' pk=department.pk %}"><input type="submit" value="Update"></a>
+    <a href="{% url 'bloodmanagement:department-update' pk=department.pk %}"><input class="btn btn-warning m-3" type="submit" value="Update"></a>
+    </div>
+    
 {% endblock content %}

@@ -208,6 +208,9 @@ def patient_detail(request,pk):
 def patient_delete(request,pk):
     if request.method == 'POST':
         patient = get_object_or_404(Patient,pk=pk)
+        department = Department.objects.get(patient=patient)
+        department.capacity +=1
+        department.save()
         patient.delete()
         return redirect('bloodmanagement:patient-list')
 

@@ -1,12 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    <h1>{{blood.patient}}</h1>
-    <h1>{{blood.date}}</h1>
-    <h2>{{ blood.blood_type}}</h2>
-    <h2>{{blood.donor}}</h2>
-    <h3>{{blood.location}}</h3>
-    <h2>{{ blood.used }}</h2>
+    <h1>Assigned To: {{blood.patient}}</h1>
+    <h1>Donated Date: {{blood.date}}</h1>
+    <h2>Blood Group: {{ blood.blood_type}}</h2>
+    <h2>Donor: {{blood.donor}}</h2>
+    <h3>Location: {{blood.location}}</h3>
     <div class="row">
     <form action="{% url 'bloodmanagement:blood-delete' pk=blood.pk %}" method="post">
         {% csrf_token %}

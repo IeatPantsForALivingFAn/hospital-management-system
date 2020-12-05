@@ -59,7 +59,6 @@ class BloodPacket(models.Model):
     donor = models.CharField(max_length=10)
     date = models.DateField(auto_now_add=True)
     location = models.TextField(max_length=50)
-    used = models.BooleanField(default=False)
     blood_type = models.CharField(choices=BloodTypes,max_length=3)
 
     def __str__(self):
