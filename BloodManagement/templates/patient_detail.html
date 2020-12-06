@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>Patient Details</h1>
-    <h1>Name: {{patient.name}}</h1>
+<hr>
+    <h2>Name: {{patient.name}}</h2>
     <h2>Gender: {{patient.get_gender_display}}</h2>
     <h2>Address: {{patient.address}}</h2>
     <h2>Phone: {{patient.phone}}</h2>

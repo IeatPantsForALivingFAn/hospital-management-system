@@ -30,7 +30,6 @@ class Doctor(models.Model):
         when Doctor is queried it returns doctors name if no attribute is requested 
         """
         return self.name
-    
 
 class Department(models.Model):
     name = models.CharField(max_length=10,unique=True)
