@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<h1>Department List</h1>
 {% for department in departments %}
 
-<h1>
+<h2>
     <a href="{% url 'bloodmanagement:department-detail' pk=department.pk %}">{{department.name}}</a>
-</h1>
+</h2>
 {% endfor %}
 
 {% endblock content %}

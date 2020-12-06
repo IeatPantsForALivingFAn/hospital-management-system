@@ -1,25 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-
-    <h1>Department Detail: {{department.name}}</h1>
+<h1>Department Details</h1>
+    <h1>Department Name: {{department.name}}</h1>
     <h2>Department Type: {{department.dept_type}}</h2>
     <h3>Capacity: {{department.capacity}}</h3>
-
-    <hr>
-    <div class='row'>
-        <div class="col-md-6">
-            <h1>Patients</h1>
-            {% for patient in department.patient_set.all %}
-                <h3><a href="{% url 'bloodmanagement:patient-detail' pk=patient.pk%}">{{ patient.name }}</a></h3>
-            {% endfor %}
-        </div>
-        <div class="col-md-6">
-            <h1>Staff</h1>
-            {% for staff in department.staff.all %}
-                <h3><a href="{% url 'bloodmanagement:staff-detail' pk=staff.pk%}">{{ staff.name }}</a></h3>
-            {% endfor %}
-        </div>
-    </div>
     <div class="row">
     <form action="{% url 'bloodmanagement:department-delete' pk=department.pk %}" method="post">
         {% csrf_token %}
@@ -27,5 +11,24 @@
     </form>
     <a href="{% url 'bloodmanagement:department-update' pk=department.pk %}"><input class="btn btn-warning m-3" type="submit" value="Update"></a>
     </div>
+    <hr>
+    
+    <div class='row'>
+        {% comment %} Patients in The Department {% endcomment %}
+        <div class="col-md-6">
+            <h1>Patients</h1>
+            {% for patient in department.patient_set.all %}
+                <h3><a href="{% url 'bloodmanagement:patient-detail' pk=patient.pk%}">{{ patient.name }}</a></h3>
+            {% endfor %}
+        </div>
+        {% comment %} staff in the Department {% endcomment %}
+        <div class="col-md-6">
+            <h1>Staff</h1>
+            {% for staff in department.staff.all %}
+                <h3><a href="{% url 'bloodmanagement:staff-detail' pk=staff.pk%}">{{ staff.name }}</a></h3>
+            {% endfor %}
+        </div>
+    </div>
+    
     
 {% endblock content %}

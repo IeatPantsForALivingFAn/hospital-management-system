@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
+<h1>Patient List</h1>
 
+{% comment %} Loop through all patients {% endcomment %}
 {% for patient in patients %}
 
-<h1>
+<h2>
     <a href="{% url 'bloodmanagement:patient-detail' pk=patient.pk %}">{{patient.name}}</a>
-</h1>
+</h2>
 {% endfor %}
 
 {% endblock content %}

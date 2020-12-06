@@ -20,9 +20,15 @@ class Doctor(models.Model):
     specialization = models.CharField(max_length=20)
 
     def get_absolute_url(self):
+        """
+        renders the models detail page
+        """
         return reverse("detail-doctor", kwargs={"pk": self.pk})
     
     def __str__(self):
+        """
+        when Doctor is queried it returns doctors name if no attribute is requested 
+        """
         return self.name
     
 
@@ -32,7 +38,16 @@ class Department(models.Model):
     capacity = models.IntegerField()
 
     def __str__(self):
+        """
+        when department is queried it returns departments name if no attribute is requested 
+        """
         return self.name
+    
+    def get_absolute_url(self):
+        """
+        renders the models detail page
+        """
+        return reverse("detail-department", kwargs={"pk": self.pk})
 
 class Patient(models.Model):
     name = models.CharField(max_length=20)
@@ -52,7 +67,16 @@ class Patient(models.Model):
     blood_type = models.CharField(choices=BloodTypes,max_length=3)
        
     def __str__(self):
+        """
+        when patient is queried it returns patients name if no attribute is requested 
+        """
         return self.name
+    
+    def get_absolute_url(self):
+        """
+        renders the models detail page
+        """
+        return reverse("detail-patient", kwargs={"pk": self.pk})
 
 class BloodPacket(models.Model):
     patient= models.OneToOneField(Patient,on_delete=models.SET_NULL,null=True,related_name='blood')
@@ -62,7 +86,16 @@ class BloodPacket(models.Model):
     blood_type = models.CharField(choices=BloodTypes,max_length=3)
 
     def __str__(self):
+        """
+        when bloodpacket is requested it returns donor's name when no attribute is requested
+        """
         return self.donor
+    
+    def get_absolute_url(self):
+        """
+        renders the models detail page
+        """
+        return reverse("detail-blood", kwargs={"pk": self.pk})
     
 class Staff(models.Model):
     name = models.CharField(max_length=20)
@@ -75,5 +108,15 @@ class Staff(models.Model):
     ],max_length=5)
     department = models.ForeignKey(Department,on_delete=models.SET_NULL,null=True,related_name='staff')
 
-
+    def __str__(self):
+        """
+        when staff is queried it returns staff's name if no attribute is requested 
+        """
+        return self.name
+    
+    def get_absolute_url(self):
+        """
+        renders the models detail page
+        """
+        return reverse("detail-staff", kwargs={"pk": self.pk})
 

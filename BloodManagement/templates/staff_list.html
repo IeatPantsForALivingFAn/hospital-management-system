@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-
+<h1>Staff List</h1>
+{% comment %} Loop through all Staff {% endcomment %}
 {% for staff in staffs %}
 
-<h1>
+<h2>
     <a href="{% url 'bloodmanagement:staff-detail' pk=staff.pk %}">{{staff.name}}</a>
-</h1>
+</h2>
 {% endfor %}
 
 {% endblock content %}

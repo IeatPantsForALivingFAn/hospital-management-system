@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
+{% comment %} blood Creation Form {% endcomment %}
+<h1>Create a Blood Packet</h1>
 <form method='POST'>
     {% csrf_token %}
     {{form.as_p}}
