@@ -284,8 +284,8 @@ def patient_detail(request,pk):
     """
     render the detail page
     """
-    # get the requested patient
-    patient = get_object_or_404(Patient,pk=pk)
+    # get the requested patient and its related department and doctor
+    patient = Patient.objects.select_related('department','doctor').get(pk=pk)
     return render(request,'patient_detail.html',context={'patient':patient})
 
 def patient_delete(request,pk):
@@ -378,7 +378,7 @@ def blood_list(request):
 
 def blood_detail(request,pk):
     """render the requested blood details"""
-    blood = get_object_or_404(BloodPacket,pk=pk)
+    blood = BloodPacket.objects.select_related('patient').get(pk=pk)
     return render(request,'blood_detail.html',context={"blood":blood})
 
 def blood_delete(request,pk):
@@ -420,7 +420,7 @@ def staff_create(request):
     
 def staff_detail(request,pk):
     """render the requested staff details"""
-    staff = Staff.objects.get(pk=pk)
+    staff = Staff.objects.select_related('department').get(pk=pk)
     return render(request,'staff_detail.html',context={"staff":staff})
 
 def staff_list(request):
